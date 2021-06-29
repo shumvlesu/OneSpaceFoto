@@ -1,0 +1,2 @@
+rootProject.name = "OneSpaсeFoto"
+include ':app'
