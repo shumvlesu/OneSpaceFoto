@@ -49,6 +49,7 @@ class PictureOfTheDayFragment : Fragment() {
         }
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
         setBottomAppBar(view)
+        //setBottomAppBar(view.findViewById(R.id.bottom_app_bar))
     }
 
     //метод, в который будем передавать наш BottomSheet и инициализировать bottomSheetBehavior.
@@ -78,6 +79,7 @@ class PictureOfTheDayFragment : Fragment() {
     private fun setBottomAppBar(view: View) {
         val context = activity as MainActivity
         context.setSupportActionBar(view.findViewById(R.id.bottom_app_bar))
+        //context.setSupportActionBar(view)
         setHasOptionsMenu(true)
         binding.fab.setOnClickListener {
             if (isMain) {

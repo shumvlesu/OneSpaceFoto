@@ -8,7 +8,6 @@ import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.shumikhin.onespaefoto.R
 import com.shumikhin.onespaefoto.databinding.BottomNavigationLayoutBinding
-import com.shumikhin.onespaefoto.databinding.MainFragmentBinding
 
 class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
 
