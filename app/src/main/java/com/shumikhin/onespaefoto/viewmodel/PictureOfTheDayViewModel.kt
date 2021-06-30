@@ -1,4 +1,4 @@
-package com.shumikhin.onespaefoto.ui
+package com.shumikhin.onespaefoto.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

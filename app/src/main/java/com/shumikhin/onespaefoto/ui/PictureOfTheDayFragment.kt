@@ -18,6 +18,7 @@ import com.shumikhin.onespaefoto.R
 import com.shumikhin.onespaefoto.databinding.MainFragmentBinding
 import com.shumikhin.onespaefoto.ui.picture.BottomNavigationDrawerFragment
 import com.shumikhin.onespaefoto.ui.picture.PictureOfTheDayData
+import com.shumikhin.onespaefoto.viewmodel.PictureOfTheDayViewModel
 
 class PictureOfTheDayFragment : Fragment() {
 
@@ -122,7 +123,19 @@ class PictureOfTheDayFragment : Fragment() {
                         error(R.drawable.ic_load_error_vector)
                         placeholder(R.drawable.ic_no_photo_vector)
                     }
+
                 }
+
+                //Сделал по аналогии с url
+                val explanation = serverResponseData.explanation
+                if (explanation.isNullOrEmpty()) {
+                    //Здеь грузим описание
+                    //Ну раз есть описание, наверняка есть и заголовок, не будем проверять на заполненность
+                    //R.id.bottom_sheet_description_header.text = serverResponseData.title
+                    //Описание под фотографией
+                    //R.id.bottom_sheet_description.text = explanation
+                }
+
             }
             is PictureOfTheDayData.Loading -> {
                 //Отобразите загрузку
