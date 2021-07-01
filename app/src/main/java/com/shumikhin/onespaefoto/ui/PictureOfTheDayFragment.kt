@@ -15,6 +15,7 @@ import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.shumikhin.onespaefoto.MainActivity
 import com.shumikhin.onespaefoto.R
+import com.shumikhin.onespaefoto.databinding.BottomSheetLayoutBinding
 import com.shumikhin.onespaefoto.databinding.MainFragmentBinding
 import com.shumikhin.onespaefoto.ui.picture.BottomNavigationDrawerFragment
 import com.shumikhin.onespaefoto.ui.picture.PictureOfTheDayData
@@ -23,6 +24,7 @@ import com.shumikhin.onespaefoto.viewmodel.PictureOfTheDayViewModel
 class PictureOfTheDayFragment : Fragment() {
 
     private var _binding: MainFragmentBinding? = null
+    private var bindingSh: BottomSheetLayoutBinding? = null
     private val binding get() = _binding!!
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
@@ -37,6 +39,9 @@ class PictureOfTheDayFragment : Fragment() {
     ): View {
         //return inflater.inflate(R.layout.main_fragment, container, false)
         _binding = MainFragmentBinding.inflate(inflater, container, false)
+        //И в фрагменте и в incude дал одно и тоже id "@+id/bottom_sheet_container"
+        //Иначе вылетатет приложение
+        bindingSh = binding.bottomSheetContainer
         return binding.getRoot()
     }
 
@@ -128,12 +133,13 @@ class PictureOfTheDayFragment : Fragment() {
 
                 //Сделал по аналогии с url
                 val explanation = serverResponseData.explanation
-                if (explanation.isNullOrEmpty()) {
+                if (!explanation.isNullOrEmpty()) {
                     //Здеь грузим описание
                     //Ну раз есть описание, наверняка есть и заголовок, не будем проверять на заполненность
-                    //R.id.bottom_sheet_description_header.text = serverResponseData.title
+                    bindingSh?.bottomSheetDescriptionHeader?.text = serverResponseData.title.toString()
                     //Описание под фотографией
-                    //R.id.bottom_sheet_description.text = explanation
+                    bindingSh?.bottomSheetDescription?.text = serverResponseData.explanation.toString()
+                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
                 }
 
             }
