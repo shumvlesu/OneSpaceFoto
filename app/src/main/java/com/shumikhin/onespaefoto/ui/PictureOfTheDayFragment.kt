@@ -154,6 +154,6 @@ class PictureOfTheDayFragment : Fragment() {
 
     companion object {
         fun newInstance() = PictureOfTheDayFragment()
-        private var isMain = true
+        private var isMain = true //
     }
 }
