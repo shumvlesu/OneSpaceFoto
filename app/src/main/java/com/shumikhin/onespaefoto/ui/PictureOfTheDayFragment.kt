@@ -61,7 +61,8 @@ class PictureOfTheDayFragment : Fragment() {
     //метод, в который будем передавать наш BottomSheet и инициализировать bottomSheetBehavior.
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED //В свернутое состояние, но не скрытое
+        bottomSheetBehavior.state =
+            BottomSheetBehavior.STATE_COLLAPSED //В свернутое состояние, но не скрытое
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -73,6 +74,13 @@ class PictureOfTheDayFragment : Fragment() {
         when (item.itemId) {
             R.id.app_bar_fav -> Toast.makeText(context, "Favourite", Toast.LENGTH_SHORT).show()
             R.id.app_bar_search -> Toast.makeText(context, "Search", Toast.LENGTH_SHORT).show()
+            R.id.app_bar_settings -> activity?.apply {
+                this.supportFragmentManager
+                    .beginTransaction()
+                    .add(R.id.container, SettingsFragment())
+                    .addToBackStack("")
+                    .commitAllowingStateLoss()
+            }
             android.R.id.home -> {
                 activity?.let {
                     BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
@@ -92,13 +100,24 @@ class PictureOfTheDayFragment : Fragment() {
                 isMain = false
                 binding.bottomAppBar.navigationIcon = null
                 binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-                binding.fab.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_back_fab))
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        context,
+                        R.drawable.ic_back_fab
+                    )
+                )
                 binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar_other_screen)
             } else {
                 isMain = true
-                binding.bottomAppBar.navigationIcon = ContextCompat.getDrawable(context, R.drawable.ic_hamburger_menu_bottom_bar)
+                binding.bottomAppBar.navigationIcon =
+                    ContextCompat.getDrawable(context, R.drawable.ic_hamburger_menu_bottom_bar)
                 binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-                binding.fab.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_plus_fab))
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        context,
+                        R.drawable.ic_plus_fab
+                    )
+                )
                 binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
             }
         }
@@ -107,7 +126,8 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.getData().observe(this@PictureOfTheDayFragment, Observer<PictureOfTheDayData> { renderData(it) })
+        viewModel.getData()
+            .observe(this@PictureOfTheDayFragment, Observer<PictureOfTheDayData> { renderData(it) })
     }
 
     private fun renderData(data: PictureOfTheDayData) {
@@ -136,10 +156,12 @@ class PictureOfTheDayFragment : Fragment() {
                 if (!explanation.isNullOrEmpty()) {
                     //Здеь грузим описание
                     //Ну раз есть описание, наверняка есть и заголовок, не будем проверять на заполненность
-                    bindingSh?.bottomSheetDescriptionHeader?.text = serverResponseData.title.toString()
+                    bindingSh?.bottomSheetDescriptionHeader?.text =
+                        serverResponseData.title.toString()
                     //Описание под фотографией
-                    bindingSh?.bottomSheetDescription?.text = serverResponseData.explanation.toString()
-                    bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+                    bindingSh?.bottomSheetDescription?.text =
+                        serverResponseData.explanation.toString()
+                    //bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
                 }
 
             }
