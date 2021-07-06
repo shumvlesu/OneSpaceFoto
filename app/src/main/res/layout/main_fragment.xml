@@ -65,7 +65,7 @@
         app:fabAlignmentMode="center"
         app:hideOnScroll="true"
         app:layout_scrollFlags="scroll|enterAlways"
-        app:navigationIcon="@drawable/ic_hamburger_menu_bottom_bar" />
+        app:navigationIcon="@drawable/ic_hamburger_menu_bottom_bar"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -75,7 +75,7 @@
         android:contentDescription="TODO"
         app:layout_anchor="@id/bottom_app_bar"
         app:srcCompat="@drawable/ic_plus_fab"
-        app:tint="#FFFFFF" />
+        app:tint="#FFFFFF"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
