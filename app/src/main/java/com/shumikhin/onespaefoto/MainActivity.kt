@@ -9,6 +9,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+        setTheme(
+            getSharedPreferences(SETTINGS_SHARED_PREFERENCES, MODE_PRIVATE)
+                .getInt(THEME_RES_ID, R.style.PinkTheme)
+        )
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, PictureOfTheDayFragment.newInstance())
