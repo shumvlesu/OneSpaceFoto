@@ -1,4 +1,4 @@
-package com.shumikhin.onespaefoto.ui
+package com.shumikhin.onespaefoto.ui.setting
 
 import android.content.Context.MODE_PRIVATE
 import android.os.Bundle

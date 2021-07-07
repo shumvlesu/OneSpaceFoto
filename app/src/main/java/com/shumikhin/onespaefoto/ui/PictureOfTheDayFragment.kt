@@ -19,6 +19,7 @@ import com.shumikhin.onespaefoto.databinding.BottomSheetLayoutBinding
 import com.shumikhin.onespaefoto.databinding.MainFragmentBinding
 import com.shumikhin.onespaefoto.ui.picture.BottomNavigationDrawerFragment
 import com.shumikhin.onespaefoto.ui.picture.PictureOfTheDayData
+import com.shumikhin.onespaefoto.ui.setting.SettingsFragment
 import com.shumikhin.onespaefoto.viewmodel.PictureOfTheDayViewModel
 
 class PictureOfTheDayFragment : Fragment() {
@@ -50,7 +51,8 @@ class PictureOfTheDayFragment : Fragment() {
         // по нажатию на иконку переходим в браузер и открывать нужную страницу в «Википедии»
         binding.inputLayout.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
+                data =
+                    Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
             })
         }
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
@@ -178,4 +180,12 @@ class PictureOfTheDayFragment : Fragment() {
         fun newInstance() = PictureOfTheDayFragment()
         private var isMain = true //
     }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+        bindingSh = null
+    }
+
 }

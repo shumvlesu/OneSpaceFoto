@@ -3,8 +3,8 @@ package com.shumikhin.onespaefoto
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.shumikhin.onespaefoto.ui.PictureOfTheDayFragment
-import com.shumikhin.onespaefoto.ui.SETTINGS_SHARED_PREFERENCES
-import com.shumikhin.onespaefoto.ui.THEME_RES_ID
+import com.shumikhin.onespaefoto.ui.setting.SETTINGS_SHARED_PREFERENCES
+import com.shumikhin.onespaefoto.ui.setting.THEME_RES_ID
 
 class MainActivity : AppCompatActivity() {
 
