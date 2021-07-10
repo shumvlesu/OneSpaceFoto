@@ -17,6 +17,7 @@ import com.shumikhin.onespaefoto.MainActivity
 import com.shumikhin.onespaefoto.R
 import com.shumikhin.onespaefoto.databinding.BottomSheetLayoutBinding
 import com.shumikhin.onespaefoto.databinding.MainFragmentBinding
+import com.shumikhin.onespaefoto.ui.api.ApiActivity
 import com.shumikhin.onespaefoto.ui.picture.BottomNavigationDrawerFragment
 import com.shumikhin.onespaefoto.ui.picture.PictureOfTheDayData
 import com.shumikhin.onespaefoto.ui.setting.SettingsFragment
@@ -88,6 +89,9 @@ class PictureOfTheDayFragment : Fragment() {
                     BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
                 }
             }
+            //Запускает активити ApiActivity
+            R.id.app_bar_api -> activity?.let { startActivity(Intent(it, ApiActivity::class.java)) }
+
         }
         return super.onOptionsItemSelected(item)
     }
