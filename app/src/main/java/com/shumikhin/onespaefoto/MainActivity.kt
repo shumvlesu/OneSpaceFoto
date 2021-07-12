@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setTheme(
             getSharedPreferences(SETTINGS_SHARED_PREFERENCES, MODE_PRIVATE)
-                .getInt(THEME_RES_ID, R.style.PinkTheme)
+                .getInt(THEME_RES_ID, R.style.OneSpaсeFoto)
         )
         setContentView(R.layout.main_activity)
         if (savedInstanceState == null) {
