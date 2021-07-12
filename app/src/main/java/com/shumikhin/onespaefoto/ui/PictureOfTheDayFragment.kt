@@ -64,8 +64,7 @@ class PictureOfTheDayFragment : Fragment() {
     //метод, в который будем передавать наш BottomSheet и инициализировать bottomSheetBehavior.
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
-        bottomSheetBehavior.state =
-            BottomSheetBehavior.STATE_COLLAPSED //В свернутое состояние, но не скрытое
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED //В свернутое состояние, но не скрытое
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -11,4 +11,5 @@
     <string name="name_of_default_theme">Тема по умолчанию</string>
     <string name="name_of_my_custom_theme_pink">Розовая тема</string>
     <string name="name_of_my_custom_theme_сosmic">Космическая тема</string>
+    <string name="todo">Кнопка действия</string>
 </resources>
