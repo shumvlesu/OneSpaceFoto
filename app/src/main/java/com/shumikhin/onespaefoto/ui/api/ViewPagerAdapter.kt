@@ -26,4 +26,16 @@ class ViewPagerAdapter(private val fragmentManager: FragmentManager) :
         return fragments.size
     }
 
+    //Для заполнения TabLayout
+    override fun getPageTitle(position: Int): CharSequence? {
+        return when (position) {
+            0 -> "Earth"
+            1 -> "Mars"
+            2 -> "Weather"
+            else -> "Earth"
+        }
+    }
+
+
+
 }
