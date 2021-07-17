@@ -18,6 +18,7 @@ import com.shumikhin.onespaefoto.R
 import com.shumikhin.onespaefoto.databinding.BottomSheetLayoutBinding
 import com.shumikhin.onespaefoto.databinding.MainFragmentBinding
 import com.shumikhin.onespaefoto.ui.api.ApiActivity
+import com.shumikhin.onespaefoto.ui.apibottom.ApiBottomActivity
 import com.shumikhin.onespaefoto.ui.picture.BottomNavigationDrawerFragment
 import com.shumikhin.onespaefoto.ui.picture.PictureOfTheDayData
 import com.shumikhin.onespaefoto.ui.setting.SettingsFragment
@@ -61,10 +62,12 @@ class PictureOfTheDayFragment : Fragment() {
         //setBottomAppBar(view.findViewById(R.id.bottom_app_bar))
     }
 
+
     //метод, в который будем передавать наш BottomSheet и инициализировать bottomSheetBehavior.
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED //В свернутое состояние, но не скрытое
+        bottomSheetBehavior.state =
+            BottomSheetBehavior.STATE_COLLAPSED //В свернутое состояние, но не скрытое
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -74,7 +77,8 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_fav -> Toast.makeText(context, "Favourite", Toast.LENGTH_SHORT).show()
+            //R.id.app_bar_fav -> Toast.makeText(context, "Favourite", Toast.LENGTH_SHORT).show()
+            R.id.app_bar_fav -> activity?.let {startActivity(Intent(it, ApiBottomActivity::class.java))}
             R.id.app_bar_search -> Toast.makeText(context, "Search", Toast.LENGTH_SHORT).show()
             R.id.app_bar_settings -> activity?.apply {
                 this.supportFragmentManager
@@ -89,11 +93,19 @@ class PictureOfTheDayFragment : Fragment() {
                 }
             }
             //Запускает активити ApiActivity
-            R.id.app_bar_api -> activity?.let { startActivity(Intent(it, ApiActivity::class.java)) }
+            R.id.app_bar_api -> activity?.let {
+                startActivity(
+                    Intent(
+                        it,
+                        ApiActivity::class.java
+                    )
+                )
+            }
 
         }
         return super.onOptionsItemSelected(item)
     }
+
 
     private fun setBottomAppBar(view: View) {
         val context = activity as MainActivity
@@ -132,7 +144,9 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel.getData()
-            .observe(this@PictureOfTheDayFragment, Observer<PictureOfTheDayData> { renderData(it) })
+            .observe(
+                this@PictureOfTheDayFragment,
+                Observer<PictureOfTheDayData> { renderData(it) })
     }
 
     private fun renderData(data: PictureOfTheDayData) {
@@ -190,5 +204,5 @@ class PictureOfTheDayFragment : Fragment() {
         _binding = null
         bindingSh = null
     }
-
 }
+

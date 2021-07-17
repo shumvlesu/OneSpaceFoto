@@ -12,4 +12,7 @@
     <string name="name_of_my_custom_theme_pink">Розовая тема</string>
     <string name="name_of_my_custom_theme_сosmic">Космическая тема</string>
     <string name="todo">Кнопка действия</string>
+    <string name="earth">Earth</string>
+    <string name="mars">Mars</string>
+    <string name="weather">Weather</string>
 </resources>
