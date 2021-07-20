@@ -175,11 +175,9 @@ class PictureOfTheDayFragment : Fragment() {
                 if (!explanation.isNullOrEmpty()) {
                     //Здеь грузим описание
                     //Ну раз есть описание, наверняка есть и заголовок, не будем проверять на заполненность
-                    bindingSh?.bottomSheetDescriptionHeader?.text =
-                        serverResponseData.title.toString()
+                    bindingSh?.bottomSheetDescriptionHeader?.text = serverResponseData.title.toString()
                     //Описание под фотографией
-                    bindingSh?.bottomSheetDescription?.text =
-                        serverResponseData.explanation.toString()
+                    bindingSh?.bottomSheetDescription?.text = serverResponseData.explanation.toString()
                     //bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
                 }
 
