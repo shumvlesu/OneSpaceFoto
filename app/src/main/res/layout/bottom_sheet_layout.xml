@@ -71,8 +71,6 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-
-
             <TextView
                 android:id="@+id/bottom_sheet_description"
                 android:layout_width="match_parent"
@@ -81,9 +79,7 @@
                 android:padding="10dp"
                 tools:text="This lovely starfield spans some four full moons." />
 
-
         </androidx.core.widget.NestedScrollView>
-
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
