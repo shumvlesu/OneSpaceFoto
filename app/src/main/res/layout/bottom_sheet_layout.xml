@@ -48,23 +48,18 @@
                     android:id="@+id/main_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
+                    android:textStyle="bold"
                     app:layout_collapseMode="pin"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                    app:titleTextColor="@color/white"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <TextView
-            android:id="@+id/bottom_sheet_description_header"
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:lineSpacingExtra="8dp"
-            android:padding="10dp"
-            android:textAlignment="center"
-            android:textColor="#000"
-            android:textStyle="bold"
-            tools:text="Two Clusters and a Comet" />
+            android:src="@drawable/ic_baseline_swap_vert_24" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
