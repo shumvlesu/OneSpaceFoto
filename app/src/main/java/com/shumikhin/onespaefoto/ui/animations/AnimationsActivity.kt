@@ -1,8 +1,11 @@
 package com.shumikhin.onespaefoto.ui.animations
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.transition.Fade
+import androidx.transition.Slide
 import androidx.transition.TransitionManager
 import com.shumikhin.onespaefoto.databinding.ActivityAnimationsBinding
 
@@ -18,7 +21,7 @@ class AnimationsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.button.setOnClickListener {
-            TransitionManager.beginDelayedTransition(binding.transitionsContainer)
+            TransitionManager.beginDelayedTransition(binding.transitionsContainer, Slide(Gravity.END))
             textIsVisible = !textIsVisible
             binding.text.visibility = if (textIsVisible) View.VISIBLE else View.GONE
         }

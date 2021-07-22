@@ -10,6 +10,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.transition.Slide
+import androidx.transition.TransitionManager
 import coil.api.load
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -181,6 +183,7 @@ class PictureOfTheDayFragment : Fragment() {
                     bindingSh?.mainToolbar?.title = serverResponseData.title.toString()
 
                     //Описание под фотографией
+                    bindingSh?.bottomSheetContainer?.let {TransitionManager.beginDelayedTransition(it)}
                     bindingSh?.bottomSheetDescription?.text = serverResponseData.explanation.toString()
                     //bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
                 }
