@@ -16,11 +16,12 @@ class AnimationsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityAnimationsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //setContentView(R.layout.activity_animations)
+
         binding.button.setOnClickListener {
             TransitionManager.beginDelayedTransition(binding.transitionsContainer)
             textIsVisible = !textIsVisible
             binding.text.visibility = if (textIsVisible) View.VISIBLE else View.GONE
         }
+
     }
 }
