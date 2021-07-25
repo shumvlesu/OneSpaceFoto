@@ -20,6 +20,7 @@ import com.shumikhin.onespaefoto.R
 import com.shumikhin.onespaefoto.databinding.BottomSheetLayoutBinding
 import com.shumikhin.onespaefoto.databinding.MainFragmentBinding
 import com.shumikhin.onespaefoto.ui.animations.AnimationsActivity
+import com.shumikhin.onespaefoto.ui.animations.AnimationsActivityBonus
 import com.shumikhin.onespaefoto.ui.api.ApiActivity
 import com.shumikhin.onespaefoto.ui.apibottom.ApiBottomActivity
 import com.shumikhin.onespaefoto.ui.picture.BottomNavigationDrawerFragment
@@ -101,7 +102,8 @@ class PictureOfTheDayFragment : Fragment() {
             //R.id.app_bar_fav -> Toast.makeText(context, "Favourite", Toast.LENGTH_SHORT).show()
             R.id.app_bar_fav -> activity?.let {startActivity(Intent(it, ApiBottomActivity::class.java))}
             //R.id.app_bar_search -> Toast.makeText(context, "Search", Toast.LENGTH_SHORT).show()
-            R.id.app_bar_search -> activity?.let {startActivity(Intent(it, AnimationsActivity::class.java))}
+            //R.id.app_bar_search -> activity?.let {startActivity(Intent(it, AnimationsActivity::class.java))}
+            R.id.app_bar_search -> activity?.let {startActivity(Intent(it, AnimationsActivityBonus::class.java))}
             R.id.app_bar_settings -> activity?.apply {
                 this.supportFragmentManager
                     .beginTransaction()
