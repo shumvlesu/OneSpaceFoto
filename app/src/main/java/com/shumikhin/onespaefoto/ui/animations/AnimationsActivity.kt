@@ -3,6 +3,7 @@ package com.shumikhin.onespaefoto.ui.animations
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +24,16 @@ class AnimationsActivity : AppCompatActivity() {
         _binding = ActivityAnimationsFabBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setFAB()
+        //Начиная с 23 API, у ScrollView появился метод setOnScrollChangeListener, в котором мы
+        //ставим нашему toolbar статус isSelected в зависимости от направления скролла (-1 означает
+        //направление вверх). Обработку статуса isSelected и берёт на себя атрибут stateListAnimator с
+        //помощью нашего селектора.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            binding.scrollView.setOnScrollChangeListener { _, _, _, _, _ ->
+                binding.toolbar.isSelected = binding.scrollView.canScrollVertically(-1)
+            }
+        }
+
     }
 
     private fun setFAB() {
