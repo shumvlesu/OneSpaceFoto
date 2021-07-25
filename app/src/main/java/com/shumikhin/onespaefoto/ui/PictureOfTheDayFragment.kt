@@ -4,14 +4,14 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.transition.Slide
-import androidx.transition.TransitionManager
+import androidx.transition.*
 import coil.api.load
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -33,6 +33,7 @@ class PictureOfTheDayFragment : Fragment() {
     private var bindingSh: BottomSheetLayoutBinding? = null
     private val binding get() = _binding!!
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
+    private var isExpanded = false
 
     //Ленивая инициализация модели
     private val viewModel: PictureOfTheDayViewModel by lazy {
@@ -60,6 +61,23 @@ class PictureOfTheDayFragment : Fragment() {
                     Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
             })
         }
+
+        //по нажатию меняем размер изображения
+        binding.imageView.setOnClickListener {
+            isExpanded = !isExpanded
+            TransitionManager.beginDelayedTransition(
+                //binding.container, TransitionSet()
+                binding.mainFragment, TransitionSet()
+                    .addTransition(ChangeBounds())
+                    .addTransition(ChangeImageTransform())
+            )
+            val params: ViewGroup.LayoutParams = binding.imageView.layoutParams
+            params.height = if (isExpanded) ViewGroup.LayoutParams.MATCH_PARENT else ViewGroup.LayoutParams.WRAP_CONTENT
+            binding.imageView.layoutParams = params
+            //В данном случае мы меняем размеры картинки и её расположение внутри ImageView (scaleType)
+            binding.imageView.scaleType = if (isExpanded) ImageView.ScaleType.FIT_CENTER else ImageView.ScaleType.CENTER
+        }
+
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
         setBottomAppBar(view)
         //setBottomAppBar(view.findViewById(R.id.bottom_app_bar))
