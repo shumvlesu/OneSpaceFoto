@@ -1,11 +1,11 @@
 package com.shumikhin.onespaefoto.ui
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -19,7 +19,6 @@ import com.shumikhin.onespaefoto.MainActivity
 import com.shumikhin.onespaefoto.R
 import com.shumikhin.onespaefoto.databinding.BottomSheetLayoutBinding
 import com.shumikhin.onespaefoto.databinding.MainFragmentBinding
-import com.shumikhin.onespaefoto.ui.animations.AnimationsActivity
 import com.shumikhin.onespaefoto.ui.animations.AnimationsActivityBonus
 import com.shumikhin.onespaefoto.ui.api.ApiActivity
 import com.shumikhin.onespaefoto.ui.apibottom.ApiBottomActivity
@@ -204,7 +203,15 @@ class PictureOfTheDayFragment : Fragment() {
 
                     //Описание под фотографией
                     bindingSh?.bottomSheetContainer?.let {TransitionManager.beginDelayedTransition(it)}
-                    bindingSh?.bottomSheetDescription?.text = serverResponseData.explanation.toString()
+                    //bindingSh?.bottomSheetDescription?.text = serverResponseData.explanation.toString()
+                    bindingSh?.bottomSheetDescription?.let {
+                        it.text = serverResponseData.explanation.toString()
+                        it.typeface = Typeface.createFromAsset(
+                            context?.assets,
+                            "fonts/FallingSkyBlack-GYXA.otf"
+                        )
+                    }
+
                     //bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
                 }
 
