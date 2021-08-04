@@ -1,10 +1,16 @@
 package com.shumikhin.onespaefoto.ui
 
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.AbsoluteSizeSpan
+import android.text.style.ForegroundColorSpan
 import android.view.*
+import android.webkit.WebSettings
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
@@ -205,11 +211,11 @@ class PictureOfTheDayFragment : Fragment() {
                     bindingSh?.bottomSheetContainer?.let {TransitionManager.beginDelayedTransition(it)}
                     //bindingSh?.bottomSheetDescription?.text = serverResponseData.explanation.toString()
                     bindingSh?.bottomSheetDescription?.let {
-                        it.text = serverResponseData.explanation.toString()
-                        it.typeface = Typeface.createFromAsset(
-                            context?.assets,
-                            "fonts/FallingSkyBlack-GYXA.otf"
-                        )
+                        val spannableText = SpannableString(serverResponseData.explanation.toString())
+                        spannableText.setSpan(ForegroundColorSpan(Color.RED),0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                        spannableText.setSpan( AbsoluteSizeSpan(40, true),0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                        it.text = spannableText
+                        it.typeface = Typeface.createFromAsset(context?.assets,"fonts/FallingSkyBlack-GYXA.otf")
                     }
 
                     //bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
