@@ -12,13 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/OneSpaсeFoto">
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/OneSpaсeFoto.Splash">
+            android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".ui.api.ApiActivity" />
         <activity android:name=".ui.apibottom.ApiBottomActivity" />
         <activity android:name=".ui.animations.AnimationsActivity" />
